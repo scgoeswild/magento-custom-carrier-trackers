@@ -27,3 +27,10 @@ The Custom Carrier Trackers extension gives you the ability to add new custom tr
 - Meets Magento standard development practices
 - Simple installation
 - 100% open source
+
+# How to install
+1. Create the folder "SimoneChinaglia" under app/code of magento installation
+2. Clone the repository
+3. Rename the folder to "CustomCarrierTrackers"
+4. enable the extension
+5. launch the setup upgrade and static content deploy. 
