@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * SimoneChinaglia Custom Carrier Trackers Extension
+ *
+ * @category     SimoneChinaglia
+ * @package      SimoneChinaglia_CustomCarrierTrackers
+ * @author       Simone Chinaglia
+ * @copyright    Copyright (c) 2022 SimoneChinaglia (https://www.simonechinaglia.com)
+ * @license      LICENSE_MV.txt or https://www.simonechinaglia.com/license-agreement/
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Shipping\Block\Adminhtml\Order\Tracking">
+        <plugin name="custom_carrier_tracker_tracking" type="SimoneChinaglia\CustomCarrierTrackers\Plugin\Shipping\Block\Adminhtml\Order\Tracking" />
+    </type>
+    <type name="Magento\Shipping\Block\Adminhtml\Order\Tracking\View">
+        <plugin name="custom_carrier_tracker_view" type="SimoneChinaglia\CustomCarrierTrackers\Plugin\Shipping\Block\Adminhtml\Order\Tracking\View" />
+    </type>
+    <type name="SimoneChinaglia\CustomCarrierTrackers\Model\Info">
+        <arguments>
+            <argument name="driver" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+</config>

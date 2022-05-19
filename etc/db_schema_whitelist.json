@@ -1,0 +1,19 @@
+{
+    "simonechinaglia_custom_carrier_trackers": {
+        "column": {
+            "tracker_id": true,
+            "carrier_title": true,
+            "carrier_code": true,
+            "tracking_url": true,
+            "is_active": true,
+            "creation_time": true,
+            "update_time": true
+        },
+        "index": {
+            "simonechinaglia_CUSTOM_CARRIER_TRACKERS_CARRIER_TITLE_TRACKING_URL": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

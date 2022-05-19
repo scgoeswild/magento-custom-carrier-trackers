@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * SimoneChinaglia Custom Carrier Trackers Extension
+ *
+ * @category     SimoneChinaglia
+ * @package      SimoneChinaglia_CustomCarrierTrackers
+ * @author       Simone Chinaglia
+ * @copyright    Copyright (c) 2022 SimoneChinaglia (https://www.simonechinaglia.com)
+ * @license      LICENSE_MV.txt or https://www.simonechinaglia.com/license-agreement/
+ */
+ -->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+<argument name="data" xsi:type="array">
+    <item name="js_config" xsi:type="array">
+        <item name="provider" xsi:type="string">cct_tracker_form.cct_tracker_form_data_source</item>
+    </item>
+    <item name="label" xsi:type="string" translate="true">General Information</item>
+    <item name="template" xsi:type="string">templates/form/collapsible</item>
+</argument>
+<settings>
+    <buttons>
+        <button name="save" class="SimoneChinaglia\CustomCarrierTrackers\Block\Adminhtml\Tracker\Edit\SaveButton"/>
+        <button name="delete" class="SimoneChinaglia\CustomCarrierTrackers\Block\Adminhtml\Tracker\Edit\DeleteButton"/>
+        <button name="back" class="SimoneChinaglia\CustomCarrierTrackers\Block\Adminhtml\Tracker\Edit\BackButton"/>
+        <button name="reset" class="SimoneChinaglia\CustomCarrierTrackers\Block\Adminhtml\Tracker\Edit\ResetButton"/>
+        <button name="save_and_continue" class="SimoneChinaglia\CustomCarrierTrackers\Block\Adminhtml\Tracker\Edit\SaveAndContinueButton"/>
+    </buttons>
+    <namespace>cct_tracker_form</namespace>
+    <dataScope>data</dataScope>
+    <deps>
+        <dep>cct_tracker_form.cct_tracker_form_data_source</dep>
+    </deps>
+</settings>
+<dataSource name="block_form_data_source">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+        </item>
+    </argument>
+    <settings>
+        <submitUrl path="cct/tracker/save"/>
+    </settings>
+    <dataProvider class="SimoneChinaglia\CustomCarrierTrackers\Model\Tracker\DataProvider" name="cct_tracker_form_data_source">
+        <settings>
+            <requestFieldName>tracker_id</requestFieldName>
+            <primaryFieldName>tracker_id</primaryFieldName>
+        </settings>
+    </dataProvider>
+</dataSource>
+<fieldset name="general">
+    <settings>
+        <label/>
+    </settings>
+    <field name="tracker_id" formElement="input">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="source" xsi:type="string">cct_tracker</item>
+            </item>
+        </argument>
+        <settings>
+            <dataType>text</dataType>
+            <visible>false</visible>
+            <dataScope>tracker_id</dataScope>
+        </settings>
+    </field>
+    <field name="carrier_title" sortOrder="10" formElement="input">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="source" xsi:type="string">cct_tracker</item>
+            </item>
+        </argument>
+        <settings>
+            <validation>
+                <rule name="required-entry" xsi:type="boolean">true</rule>
+            </validation>
+            <dataType>text</dataType>
+            <label translate="true">Nome del vettore</label>
+            <dataScope>carrier_title</dataScope>
+        </settings>
+    </field>
+    <field name="tracking_url" sortOrder="20" formElement="input" component="SimoneChinaglia_CustomCarrierTrackers/component/tracking-url-field">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="source" xsi:type="string">cct_tracker</item>
+            </item>
+        </argument>
+        <settings>
+            <validation>
+                <rule name="required-entry" xsi:type="boolean">true</rule>
+                <rule name="validate-tracking-url" xsi:type="boolean">true</rule>
+            </validation>
+            <dataType>text</dataType>
+            <label translate="true">Tracking URL</label>
+            <dataScope>tracking_url</dataScope>
+            <notice translate="true">Utilizza la variabile #TRACKNUM# che sarà sostituita dal numero di tracking in URL. Puoi utilizzare anche altre variabili com #FIRSTNAME#, #LASTNAME#, #COUNTRYCODE#, #POSTCODE#.</notice>
+        </settings>
+    </field>
+    <field name="is_active" sortOrder="30" formElement="checkbox">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="source" xsi:type="string">cct_tracker</item>
+                <item name="default" xsi:type="number">1</item>
+            </item>
+        </argument>
+        <settings>
+            <dataType>boolean</dataType>
+            <label translate="true">Abilitato</label>
+            <dataScope>is_active</dataScope>
+        </settings>
+        <formElements>
+            <checkbox>
+                <settings>
+                    <valueMap>
+                        <map name="false" xsi:type="number">0</map>
+                        <map name="true" xsi:type="number">1</map>
+                    </valueMap>
+                    <prefer>toggle</prefer>
+                </settings>
+            </checkbox>
+        </formElements>
+    </field>
+</fieldset>
+</form>
+

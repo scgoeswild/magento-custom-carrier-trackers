@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * SimoneChinaglia Custom Carrier Trackers Extension
+ *
+ * @category     SimoneChinaglia
+ * @package      SimoneChinaglia_CustomCarrierTrackers
+ * @author       Simone Chinaglia
+ * @copyright    Copyright (c) 2022 SimoneChinaglia (https://www.simonechinaglia.com)
+ * @license      LICENSE_MV.txt or https://www.simonechinaglia.com/license-agreement/
+ */
+ -->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/custom_carrier_trackers" method="GET">
+        <service class="SimoneChinaglia\CustomCarrierTrackers\Api\TrackerRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="SimoneChinaglia_CustomCarrierTrackers::custom_carrier_trackers" />
+        </resources>
+    </route>
+    <route url="/V1/custom_carrier_trackers/:trackerId" method="GET">
+        <service class="SimoneChinaglia\CustomCarrierTrackers\Api\TrackerRepositoryInterface" method="getById"/>
+        <resources>
+            <resource ref="SimoneChinaglia_CustomCarrierTrackers::custom_carrier_trackers" />
+        </resources>
+    </route>
+    <route url="/V1/custom_carrier_tracker" method="POST">
+        <service class="SimoneChinaglia\CustomCarrierTrackers\Api\TrackerRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="SimoneChinaglia_CustomCarrierTrackers::custom_carrier_trackers" />
+        </resources>
+    </route>
+    <route url="/V1/custom_carrier_tracker/:trackerId" method="DELETE">
+        <service class="SimoneChinaglia\CustomCarrierTrackers\Api\TrackerRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="SimoneChinaglia_CustomCarrierTrackers::custom_carrier_trackers" />
+        </resources>
+    </route>
+</routes>

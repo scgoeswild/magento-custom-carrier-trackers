@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * SimoneChinaglia Custom Carrier Trackers Extension
+ *
+ * @category     SimoneChinaglia
+ * @package      SimoneChinaglia_CustomCarrierTrackers
+ * @author       Simone Chinaglia
+ * @copyright    Copyright (c) 2022 SimoneChinaglia (https://www.simonechinaglia.com)
+ * @license      LICENSE_MV.txt or https://www.simonechinaglia.com/license-agreement/
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="admin">
+        <route id="cct" frontName="cct">
+            <module name="SimoneChinaglia_CustomCarrierTrackers" before="Magento_Backend" />
+        </route>
+    </router>
+</config>

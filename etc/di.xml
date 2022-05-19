@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * SimoneChinaglia Custom Carrier Trackers Extension
+ *
+ * @category     SimoneChinaglia
+ * @package      SimoneChinaglia_CustomCarrierTrackers
+ * @author       Simone Chinaglia
+ * @copyright    Copyright (c) 2022 SimoneChinaglia (https://www.simonechinaglia.com)
+ * @license      LICENSE_MV.txt or https://www.simonechinaglia.com/license-agreement/
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Shipping\Helper\Data">
+        <plugin name="custom_carrier_tracker_url" type="SimoneChinaglia\CustomCarrierTrackers\Plugin\Shipping\Helper\Data" />
+    </type>
+    <type name="Magento\Shipping\Model\Order\Track">
+        <plugin name="custom-carrier-tracker-number-details" type="SimoneChinaglia\CustomCarrierTrackers\Plugin\Shipping\Model\Order\Track" />
+    </type>
+    <preference for="SimoneChinaglia\CustomCarrierTrackers\Api\Data\TrackerSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="SimoneChinaglia\CustomCarrierTrackers\Api\Data\TrackerInterface" type="SimoneChinaglia\CustomCarrierTrackers\Model\Data\Tracker" />
+    <preference for="SimoneChinaglia\CustomCarrierTrackers\Api\TrackerRepositoryInterface" type="SimoneChinaglia\CustomCarrierTrackers\Model\ResourceModel\TrackerRepository" />
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="SimoneChinaglia\CustomCarrierTrackers\Api\Data\TrackerInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="string">simonechinaglia_custom_carrier_trackers</item>
+                    <item name="identifierField" xsi:type="string">tracker_id</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="SimoneChinaglia\CustomCarrierTrackers\Model\ResourceModel\Tracker\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">simonechinaglia_custom_carrier_trackers</argument>
+            <argument name="eventPrefix" xsi:type="string">custom_carrier_trackers_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">custom_carrier_trackers_collection</argument>
+            <argument name="resourceModel" xsi:type="string">SimoneChinaglia\CustomCarrierTrackers\Model\ResourceModel\Tracker</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="cct_tracker_listing_data_source" xsi:type="string">SimoneChinaglia\CustomCarrierTrackers\Model\ResourceModel\Tracker\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="TrackerGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="TrackerGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">SimoneChinaglia\CustomCarrierTrackers\Model\ResourceModel\Tracker\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">TrackerGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Sales\Model\Order\Shipment">
+        <plugin name="get_tracks_tracking_url" type="SimoneChinaglia\CustomCarrierTrackers\Plugin\Sales\Model\Order\ShipmentGetTracks"/>
+    </type>
+</config>

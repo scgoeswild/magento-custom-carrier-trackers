@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * SimoneChinaglia Custom Carrier Trackers Extension
+ *
+ * @category     SimoneChinaglia
+ * @package      SimoneChinaglia_CustomCarrierTrackers
+ * @author       Simone Chinaglia
+ * @copyright    Copyright (c) 2022 SimoneChinaglia (https://www.simonechinaglia.com)
+ * @license      LICENSE_MV.txt or https://www.simonechinaglia.com/license-agreement/
+ */
+ -->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+<argument name="data" xsi:type="array">
+    <item name="js_config" xsi:type="array">
+        <item name="provider" xsi:type="string">cct_tracker_listing.cct_tracker_listing_data_source</item>
+    </item>
+</argument>
+<settings>
+    <buttons>
+        <button name="add">
+            <url path="*/*/new"/>
+            <class>primary</class>
+            <label translate="true">Aggiungi vettore</label>
+        </button>
+    </buttons>
+    <spinner>cct_tracker_columns</spinner>
+    <deps>
+        <dep>cct_tracker_listing.cct_tracker_listing_data_source</dep>
+    </deps>
+</settings>
+<dataSource name="cct_tracker_listing_data_source" component="Magento_Ui/js/grid/provider">
+    <settings>
+        <storageConfig>
+            <param name="indexField" xsi:type="string">tracker_id</param>
+        </storageConfig>
+        <updateUrl path="mui/index/render"/>
+    </settings>
+    <aclResource>SimoneChinaglia_CustomCarrierTrackers::custom_carrier_trackers</aclResource>
+    <dataProvider class="TrackerGridDataProvider" name="cct_tracker_listing_data_source">
+        <settings>
+            <requestFieldName>id</requestFieldName>
+            <primaryFieldName>tracker_id</primaryFieldName>
+        </settings>
+    </dataProvider>
+</dataSource>
+<listingToolbar name="listing_top">
+    <settings>
+        <sticky>true</sticky>
+    </settings>
+    <bookmark name="bookmarks"/>
+    <columnsControls name="columns_controls"/>
+    <filterSearch name="fulltext"/>
+    <filters name="listing_filters">
+        <settings>
+            <templates>
+                <filters>
+                    <select>
+                        <param name="template" xsi:type="string">ui/grid/filters/elements/ui-select</param>
+                        <param name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</param>
+                    </select>
+                </filters>
+            </templates>
+        </settings>
+    </filters>
+    <massaction name="listing_massaction">
+        <action name="delete">
+            <settings>
+                <confirm>
+                    <message translate="true">Sei sicuro di voler cancellare questi vettori?</message>
+                    <title translate="true">Cancella</title>
+                </confirm>
+                <url path="cct/tracker/massDelete"/>
+                <type>delete</type>
+                <label translate="true">Cancella</label>
+            </settings>
+        </action>
+        <action name="enable">
+            <settings>
+                <url path="cct/tracker/massEnable"/>
+                <type>enable</type>
+                <label translate="true">Abilita</label>
+            </settings>
+        </action>
+        <action name="disable">
+            <settings>
+                <url path="cct/tracker/massDisable"/>
+                <type>disable</type>
+                <label translate="true">Disabilita</label>
+            </settings>
+        </action>
+        <action name="edit">
+            <settings>
+                <callback>
+                    <target>editSelected</target>
+                    <provider>cct_tracker_listing.cct_tracker_listing.cct_tracker_columns_editor</provider>
+                </callback>
+                <type>edit</type>
+                <label translate="true">Modifica</label>
+            </settings>
+        </action>
+    </massaction>
+    <paging name="listing_paging"/>
+</listingToolbar>
+<columns name="cct_tracker_columns">
+    <settings>
+        <editorConfig>
+            <param name="clientConfig" xsi:type="array">
+                <item name="saveUrl" xsi:type="url" path="cct/tracker/inlineEdit"/>
+                <item name="validateBeforeSave" xsi:type="boolean">false</item>
+            </param>
+            <param name="indexField" xsi:type="string">tracker_id</param>
+            <param name="enabled" xsi:type="boolean">true</param>
+            <param name="selectProvider" xsi:type="string">cct_tracker_listing.cct_tracker_listing.cct_tracker_columns.ids</param>
+        </editorConfig>
+        <childDefaults>
+            <param name="fieldAction" xsi:type="array">
+                <item name="provider" xsi:type="string">cct_tracker_listing.cct_tracker_listing.cct_tracker_columns_editor</item>
+                <item name="target" xsi:type="string">startEdit</item>
+                <item name="params" xsi:type="array">
+                    <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+                    <item name="1" xsi:type="boolean">true</item>
+                </item>
+            </param>
+        </childDefaults>
+    </settings>
+    <selectionsColumn name="ids">
+        <settings>
+            <indexField>tracker_id</indexField>
+        </settings>
+    </selectionsColumn>
+    <column name="tracker_id">
+        <settings>
+            <filter>textRange</filter>
+            <label translate="true">Tracker ID</label>
+            <sorting>desc</sorting>
+        </settings>
+    </column>
+    <column name="carrier_code">
+        <settings>
+            <filter>text</filter>
+            <editor>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </editor>
+            <label translate="true">Codice Vettore</label>
+        </settings>
+    </column>
+    <column name="carrier_title">
+        <settings>
+            <filter>text</filter>
+            <editor>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <editorType>text</editorType>
+            </editor>
+            <label translate="true">Nome</label>
+        </settings>
+    </column>
+    <column name="tracking_url">
+        <settings>
+            <filter>text</filter>
+            <editor>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-tracking-url" xsi:type="boolean">true</rule>
+                </validation>
+                <editorType>text</editorType>
+            </editor>
+            <label translate="true">Tracking URL</label>
+        </settings>
+    </column>
+    <column name="is_active" component="Magento_Ui/js/grid/columns/select">
+        <settings>
+            <options class="SimoneChinaglia\CustomCarrierTrackers\Model\Tracker\Source\IsActive"/>
+            <filter>select</filter>
+            <editor>
+                <editorType>select</editorType>
+            </editor>
+            <dataType>select</dataType>
+            <label translate="true">Abilitato</label>
+        </settings>
+    </column>
+    <actionsColumn name="actions" class="SimoneChinaglia\CustomCarrierTrackers\Ui\Component\Listing\Column\TrackerActions">
+        <settings>
+            <indexField>tracker_id</indexField>
+        </settings>
+    </actionsColumn>
+</columns>
+</listing>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * SimoneChinaglia Custom Carrier Trackers Extension
+ *
+ * @category     SimoneChinaglia
+ * @package      SimoneChinaglia_CustomCarrierTrackers
+ * @author       Simone Chinaglia
+ * @copyright    Copyright (c) 2022 SimoneChinaglia (https://www.simonechinaglia.com)
+ * @license      LICENSE_MV.txt or https://www.simonechinaglia.com/license-agreement/
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="simonechinaglia" translate="label" sortOrder="1000">
+            <label>SimoneChinaglia</label>
+        </tab>
+        <section id="cct" translate="label" type="text" sortOrder="1000" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Vettori custom</label>
+            <tab>simonechinaglia</tab>
+            <resource>SimoneChinaglia_CustomCarrierTrackers::custom_carrier_trackers_config</resource>
+            <group id="about" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <frontend_model>SimoneChinaglia\CustomCarrierTrackers\Block\Adminhtml\System\Config\Info</frontend_model>
+            </group>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Generale</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Abilitato</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="disabled_default_carriers" translate="label" type="multiselect" sortOrder="11" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Vettori disabilitati di default</label>
+                    <source_model>SimoneChinaglia\CustomCarrierTrackers\Model\Config\Source\Tracking</source_model>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

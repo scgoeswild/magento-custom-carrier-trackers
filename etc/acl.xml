@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * SimoneChinaglia Custom Carrier Trackers Extension
+ *
+ * @category     SimoneChinaglia
+ * @package      SimoneChinaglia_CustomCarrierTrackers
+ * @author       Simone Chinaglia
+ * @copyright    Copyright (c) 2022 SimoneChinaglia (https://www.simonechinaglia.com)
+ * @license      LICENSE_MV.txt or https://www.simonechinaglia.com/license-agreement/
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="SimoneChinaglia_CustomCarrierTrackers::simonechinaglia" title="Vettori custom" sortOrder="100">
+                   <resource id="SimoneChinaglia_CustomCarrierTrackers::extensions" title="Extensions" sortOrder="60">
+                        <resource id="SimoneChinaglia_CustomCarrierTrackers::custom_carrier_trackers" title="Custom Carrier Trackers" sortOrder="10" />
+                   </resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="SimoneChinaglia_CustomCarrierTrackers::custom_carrier_trackers_config" title="Custom Carrier Trackers Section" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>
