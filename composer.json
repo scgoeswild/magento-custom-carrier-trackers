@@ -11,10 +11,8 @@
         "magento/module-shipping": "100.3.*||100.4.*"
     },
     "type": "magento2-module",
-    "version": "1.0.1",
-    "license": [
-        "LICENSE_MV"
-    ],
+    "version": "1.0.2",
+    "license": "Apache-2.0",
     "autoload": {
         "files": [
             "registration.php"
