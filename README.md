@@ -5,7 +5,12 @@ Add unlimited new custom ship carriers and allow to your customers to track thei
   <img src="https://img.shields.io/badge/magento-2.4-brightgreen.svg?logo=magento&longCache=true" alt="Supported Magento Versions" />
    <a href="https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity" target="_blank"><img src="https://img.shields.io/badge/maintained%3F-yes-brightgreen.svg" alt="Maintained - Yes" /></a>
   <a href="https://opensource.org/licenses/GPL-3.0" target="_blank"><img src="https://img.shields.io/badge/license-GPL-blue.svg" /></a>
-<a href="https://packagist.org/packages/PUGX/badge-poser" rel="nofollow"><img src="https://github.com/PUGX/badge-poser/workflows/Test/badge.svg" alt="Github actions Build" style="max-width: 100%;"></a>
+  <a href="https://packagist.org/packages/simonechinaglia/module-custom-carrier-trackers"><img src="http://poser.pugx.org/simonechinaglia/module-custom-carrier-trackers/v" alt="Latest Stable Version"></a> 
+<a href="https://packagist.org/packages/simonechinaglia/module-custom-carrier-trackers"><img src="http://poser.pugx.org/simonechinaglia/module-custom-carrier-trackers/downloads" alt="Total Downloads"></a> 
+<a href="https://packagist.org/packages/simonechinaglia/module-custom-carrier-trackers"><img src="http://poser.pugx.org/simonechinaglia/module-custom-carrier-trackers/v/unstable" alt="Latest Unstable Version"></a> 
+<a href="https://packagist.org/packages/simonechinaglia/module-custom-carrier-trackers"><img src="http://poser.pugx.org/simonechinaglia/module-custom-carrier-trackers/license" alt="License"></a> 
+<a href="https://packagist.org/packages/simonechinaglia/module-custom-carrier-trackers"><img src="http://poser.pugx.org/simonechinaglia/module-custom-carrier-trackers/require/php" alt="PHP Version Require"></a></p>
+
 </div>
 ## Overview
 
