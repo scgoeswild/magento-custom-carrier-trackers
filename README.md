@@ -1,6 +1,12 @@
 # Custom carries trackers
 Add unlimited new custom ship carriers and allow to your customers to track their shipment directly from their account and the shipment email.
 
+<div align="center">
+  <img src="https://img.shields.io/badge/magento-2.4-brightgreen.svg?logo=magento&longCache=true" alt="Supported Magento Versions" />
+   <a href="https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity" target="_blank"><img src="https://img.shields.io/badge/maintained%3F-yes-brightgreen.svg" alt="Maintained - Yes" /></a>
+  <a href="https://opensource.org/licenses/GPL-3.0" target="_blank"><img src="https://img.shields.io/badge/license-GPL-blue.svg" /></a>
+<a href="https://packagist.org/packages/PUGX/badge-poser" rel="nofollow"><img src="https://github.com/PUGX/badge-poser/workflows/Test/badge.svg" alt="Github actions Build" style="max-width: 100%;"></a>
+</div>
 ## Overview
 
 Are the Magento default shipping carriers not enough for your store? Do you need to add more custom carriers? Do you want your customers to track their shipment directly from their account and the shipment email? We have the solution for all those questions!
@@ -37,8 +43,9 @@ The Custom Carrier Trackers extension gives you the ability to add new custom tr
 - Copy to folder
 
 ### Option 2: Composer installation (suggest)
-- composer require simonechinaglia/module-custom-carrier-trackers
-
+```
+composer require simonechinaglia/module-custom-carrier-trackers
+```
 ### Enable Extension
 
 ```
