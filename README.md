@@ -10,8 +10,8 @@ Add unlimited new custom ship carriers and allow to your customers to track thei
 <a href="https://packagist.org/packages/simonechinaglia/module-custom-carrier-trackers"><img src="http://poser.pugx.org/simonechinaglia/module-custom-carrier-trackers/v/unstable" alt="Latest Unstable Version"></a> 
 <a href="https://packagist.org/packages/simonechinaglia/module-custom-carrier-trackers"><img src="http://poser.pugx.org/simonechinaglia/module-custom-carrier-trackers/license" alt="License"></a> 
 <a href="https://packagist.org/packages/simonechinaglia/module-custom-carrier-trackers"><img src="http://poser.pugx.org/simonechinaglia/module-custom-carrier-trackers/require/php" alt="PHP Version Require"></a></p>
-
 </div>
+
 ## Overview
 
 Are the Magento default shipping carriers not enough for your store? Do you need to add more custom carriers? Do you want your customers to track their shipment directly from their account and the shipment email? We have the solution for all those questions!
