@@ -11,7 +11,7 @@
         "magento/module-shipping": "100.3.*||100.4.*"
     },
     "type": "magento2-module",
-    "version": "2.4.3",
+    "version": "1.0.1",
     "license": [
         "LICENSE_MV"
     ],
@@ -27,7 +27,8 @@
         {
             "name": "Simone Chinaglia",
             "homepage": "https://www.simonechinaglia.com/",
-            "email": "hello@simonechinaglia.net"
+            "email": "hello@simonechinaglia.net",
+            "role": "Lead"
         }
     ],
     "support": {
